@@ -1,0 +1,254 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(133deg, #dfecff 1.76%, #8fb6ea 77.04%);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: "Alexandria", sans-serif;
+}
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0;
+  background: #fff;
+  border-radius: 0 0 44px 44px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  height: 150px;
+}
+
+.navbar-collapse {
+  justify-content: flex-end; /* Align menu to the right */
+}
+
+.nav-link {
+  color: #333;
+  text-align: center;
+  font-family: Alexandria;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.logo-img {
+  max-width: 290px; /* Retained original size of the logo */
+  height: auto;
+}
+
+.navbar-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.nav-link.custom-link {
+  color: #333;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+.nav-link.custom-link:hover {
+  color: #0d6efd;
+}
+.sign_in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 2rem;
+}
+.sign_in .container {
+  max-width: 1200px;
+  width: 100%;
+  background: #fdfdfd;
+  border-radius: 20px;
+  border: none; /* Removed border highlight */
+  box-shadow: none; /* Removed shadow for a cleaner look */
+  padding: 2rem;
+}
+.container.py-5 {
+  max-width: 1600px; /* Increased width for the container */
+
+  border-radius: 44px;
+  border: 1px solid #8fb6ea;
+  background: #fdfdfd;
+  box-shadow: 4px 0px 16px 0px rgba(115, 182, 242, 0.24),
+    -4px -4px 16px 0px rgba(115, 182, 242, 0.24);
+  flex-shrink: 0;
+}
+.card {
+  border: none; /* Removed border highlight */
+  box-shadow: none; /* Removed shadow for a cleaner look */
+  background: #fdfdfd; /* Set background color */
+  padding: 2rem;
+  width: 85%;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+.user-type-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 240px;
+  height: 55px;
+  padding: 9px 20px;
+  border-radius: 12px;
+  border: 1px solid #d4d4d4;
+  background: #fdfdfd;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.user-type-btn.active {
+  background-color: #0d6efd;
+  color: white;
+  border-color: #0d6efd;
+}
+.user-type-btn img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.user-type-btn span {
+  flex-grow: 1;
+  text-align: center;
+}
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Eye animation styles */
+.eye-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.eye-btn.closed {
+  transform: scale(1.2); /* Enlarge animation when closed */
+  opacity: 1; /* Full opacity when closed */
+}
+
+/* Sign-in Form Styles */
+.sign_in h3.mb-4 {
+  color: #333;
+  text-align: left; /* Adjusted alignment to match the picture */
+  font-family: Alexandria;
+  font-size: 55px; /* Increased font size */
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%;
+  letter-spacing: 0%;
+  margin-bottom: 1rem; /* Adjusted spacing */
+  margin-top: -60px;
+}
+
+/* responsive styles */
+@media (max-width: 992px) {
+  .custom-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .sign_in .container {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+  .card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-navbar .navbar-toggler {
+    display: block; /* Ensure the toggle button is visible */
+  }
+  .custom-navbar .collapse {
+    display: none; /* Initially hide the links */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: auto;
+    padding: 1rem;
+  }
+  .custom-navbar .navbar-toggler.collapsed + .collapse {
+    display: block; /* Show links when toggler is clicked */
+  }
+  .custom-navbar .nav {
+    flex-direction: column; /* Stack links vertically */
+    gap: 0.5rem; /* Add spacing between links */
+    text-align: right; /* Align links to the right */
+  }
+  .custom-navbar .nav-link {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+  .sign_in {
+    padding: 1rem;
+  }
+  .user-type-btn {
+    max-width: 100%;
+    font-size: 1rem;
+    height: 50px;
+  }
+  .d-flex.mb-3 {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .user-type-btn.me-2 {
+    margin-right: 0;
+  }
+  .logo-img {
+    max-width: 300px;
+  }
+  h3.mb-4 {
+    font-size: 1.5rem;
+  }
+  .form-label {
+    font-size: 0.9rem;
+  }
+  .btn-primary {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-navbar {
+    padding: 1rem;
+  }
+  .nav-link.custom-link {
+    font-size: 1rem;
+  }
+  .sign_in .container {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .card {
+    padding: 1rem;
+  }
+  .user-type-btn {
+    height: 45px;
+    font-size: 0.9rem;
+  }
+  .logo-img {
+    max-width: 230px;
+  }
+}

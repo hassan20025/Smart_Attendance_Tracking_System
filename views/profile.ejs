@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClassTrack - AI-Powered Attendance System</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/profile.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="images/Screenshot_2025-02-07_002619-removebg-preview 1.png"
+    />
+  </head>
+
+  <body>
+    <!-- Main Navigation Bar -->
+    <%- include('partials/nameheader.ejs') %>
+
+    <!-- Profile Section -->
+    <div class="home-page">
+      <div class="student">
+        <div class="overlap">
+          <div class="hello">Hello,<br /><span id="user-name"></span></div>
+          <div class="line-container">
+            <img class="line" src="images/line 4.svg" />
+            <img class="img" src="images/line 5.svg" />
+            <img class="line-2" src="images/line 6.svg" />
+          </div>
+        </div>
+        <img class="line-3" src="images/Line 2.png" />
+        <div class="image-container">
+          <img class="image" src="images/image 11.png" />
+          <p class="p">
+            Welcome to your account in Misr University For Science and
+            Technology smart attendance system
+          </p>
+        </div>
+        <p class="text-wrapper">
+          Here, you can securely verify your presence by uploading a short
+          video. Our advanced AI technology will process your submission to
+          ensure accurate and automated attendance tracking.
+        </p>
+        <img class="frame" src="images/Frame 33.png" />
+        <div class="div-wrapper">
+          <form>
+            <a href="/uploadvideo" class="text-wrapper-2">Upload Video</a>
+          </form>
+        </div>
+        <div class="div-wrapper2">
+          <a
+            href="#overlap-2"
+            class="text-wrapper3"
+            onclick="smoothScrollTo('.overlap-2', 1000)"
+            >Watch Guide</a
+          >
+        </div>
+        <div class="overlap-2">
+          <img class="group" src="images/group.png" style="z-index: 0" />
+          <div class="rectangle"></div>
+          <img class="line-4" src="images/Line 7.png" />
+          <img class="line-5" src="images/Line 8.png" />
+          <img class="vector" src="images/vector 29.png" style="z-index: 3" />
+          <div class="polygon">
+            <img
+              class="polygon-2"
+              src="images/Polygon 1.svg"
+              onclick="playVideo()"
+            />
+          </div>
+          <video id="guideVideo" controls>
+            <source src="images/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6">
+            <h5>ClassTrack</h5>
+            <p>
+              AI-powered attendance system for modern educational institutions.
+            </p>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <h5>Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="home.html" class="text-white">Home</a></li>
+              <li><a href="plans.html" class="text-white">Plans</a></li>
+              <li><a href="aboutus.html" class="text-white">About</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5>Contact</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-envelope me-2"></i> info@classtrack.com</li>
+              <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <h5>Follow Us</h5>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="text-white"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-white"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4 bg-light" />
+        <div class="row">
+          <div class="col-md-6 mb-3 mb-md-0">
+            <p class="mb-0">&copy; 2023 ClassTrack. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#" class="text-white me-3">Privacy Policy</a>
+            <a href="#" class="text-white">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+      // Get and display current user information
+      function displayUserInfo() {
+        let currentUser = localStorage.getItem("currentUsera");
+
+        if (!currentUser) {
+          // If no user is found in localStorage, create a default user
+          console.log("No user found in localStorage");
+          currentUser = {
+            fullName: "<%= name %>",
+            firstName: "<%= name%>",
+          };
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        } else {
+          console.log("User found in localStorage");
+          currentUser = JSON.parse(currentUser);
+        }
+
+        // Display user's full name
+        const userNameElement = document.getElementById("user-name");
+        if (userNameElement) {
+          userNameElement.textContent = currentUser.fullName;
+        }
+
+        // Display first character of first name
+        const userCharElement = document.getElementById("user-char");
+        if (userCharElement) {
+          userCharElement.textContent = currentUser.firstName.charAt(0);
+        }
+      }
+
+      // Run the function when the page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        displayUserInfo();
+
+        // Handle video upload
+        const videoUpload = document.getElementById("videoUpload");
+        if (videoUpload) {
+          videoUpload.addEventListener("change", function (e) {
+            if (e.target.files && e.target.files[0]) {
+              const file = e.target.files[0];
+              if (file.type.startsWith("video/")) {
+                // Handle video file
+                console.log("Video file selected:", file.name);
+                // Add your video processing logic here
+              } else {
+                alert("Please select a video file");
+                e.target.value = "";
+              }
+            }
+          });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+            });
+          });
+        });
+      });
+
+      function smoothScrollTo(selector, duration) {
+        const element = document.querySelector(selector);
+        const elementPosition = element.getBoundingClientRect().top;
+        const startPosition = window.pageYOffset;
+        const distance = elementPosition - 100; // Offset for better positioning
+        let startTime = null;
+
+        function animation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = ease(timeElapsed, startPosition, distance, duration);
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function ease(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t + b;
+          t--;
+          return (-c / 2) * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
+      }
+
+      function playVideo() {
+        // Hide only the play button and decorative elements
+        document.querySelector(".polygon").style.display = "none";
+        document.querySelector(".rectangle").style.display = "none";
+        document.querySelector(".line-4").style.display = "none";
+        document.querySelector(".line-5").style.display = "none";
+
+        // Show and play the video
+        const video = document.getElementById("guideVideo");
+        video.style.display = "block";
+        video.play();
+
+        // Set z-index values for proper layering
+        document.querySelector(".vector").style.zIndex = "0"; // Vector in front
+        document.querySelector(".group").style.zIndex = "0"; // Group behind
+      }
+      videoUpload.addEventListener("change", function (e) {
+        if (e.target.files && e.target.files[0]) {
+          const file = e.target.files[0];
+          if (file.type.startsWith("video/")) {
+            console.log("Video file selected:", file.name);
+            // Submit the form to upload
+            document.getElementById("uploadForm").submit();
+          } else {
+            alert("Please select a video file");
+            e.target.value = "";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
