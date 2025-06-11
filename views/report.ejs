@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ClassTrack</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/attendance_report_analysis.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img
+            src="images/Screenshot_2025-02-07_002619-removebg-preview 1.png"
+            alt="Class Track Logo"
+            class="logo-img"
+            style="max-width: 160px; width: 100%; height: auto"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a
+                class="nav-link custom-link"
+                href="#"
+                aria-label="Navigate to Home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="#" aria-label="View Plans"
+                >Plans</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link custom-link"
+                href="#"
+                aria-label="Learn About Us"
+                >About us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-link" href="#" aria-label="Contact Us"
+                >Contact us</a
+              >
+            </li>
+          </ul>
+          <div class="navbar-icons">
+            <i class="bi bi-bell" aria-label="Notifications"></i>
+            <div class="navbar-icon">
+              <span
+                class="rounded-circle bg-light d-flex justify-content-center align-items-center"
+                style="
+                  width: 40px;
+                  height: 40px;
+                  font-weight: bold;
+                  font-size: 1.2rem;
+                  color: #333;
+                "
+                id="user-initial"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-section">
+      <div class="container py-5">
+        <!-- Filters -->
+        <div class="row filter-row g-2">
+          <div class="col-12 col-md-4 mb-2 mb-md-0">
+            <select class="form-select" aria-label="Term">
+              <option selected>Term</option>
+              <option value="1">Term 1</option>
+              <option value="2">Term 2</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-4 mb-2 mb-md-0">
+            <select class="form-select" aria-label="Course">
+              <option selected>Course</option>
+              <option value="1">CSE599</option>
+              <option value="2">CSE598</option>
+            </select>
+          </div>
+          <div class="col-12 col-md-4">
+            <select class="form-select" id="weekSelect" aria-label="Week">
+              <option selected>Week</option>
+              <option value="1">Week 1</option>
+              <option value="2">Week 2</option>
+              <option value="3">Week 3</option>
+              <option value="4">Week 4</option>
+              <option value="5">Week 5</option>
+              <option value="6">Week 6</option>
+              <option value="7">Week 7</option>
+              <option value="8">Week 8</option>
+              <option value="final">Final</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Weekly Attendance Report -->
+        <div class="custom-card">
+          <h5>Weekly Attendance Report</h5>
+          <div class="table-responsive">
+            <table class="table table-striped align-middle">
+              <thead>
+                <tr>
+                  <th>Course</th>
+                  <th>CRN</th>
+                  <th>Date</th>
+                  <th>Duration</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CSE599</td>
+                  <td>63490</td>
+                  <td>4-5-2024</td>
+                  <td>1-3 PM</td>
+                  <td>
+                    <button class="btn btn-view btn-sm">view</button>
+                    <i class="bi bi-download icon-download"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CSE599</td>
+                  <td>50710</td>
+                  <td>6-5-2024</td>
+                  <td>1-3 PM</td>
+                  <td>
+                    <button class="btn btn-view btn-sm">view</button>
+                    <i class="bi bi-download icon-download"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>CSE599</td>
+                  <td>69013</td>
+                  <td>2-5-2024</td>
+                  <td>9-11 AM</td>
+                  <td>
+                    <button class="btn btn-view btn-sm">view</button>
+                    <i class="bi bi-download icon-download"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Attendance Analysis -->
+        <div class="custom-card">
+          <h5 class="analysis-title mb-1">Attendance Analysis</h5>
+          <div class="analysis-underline mb-2"></div>
+          <p
+            class="mb-2"
+            style="font-size: 0.97rem; color: #444; max-width: 480px"
+          >
+            Analyze weekly student attendance with visual insights. Monitor
+            trends, spot absentees, and highlight top performers and at-risk
+            students.
+          </p>
+          <div class="mb-3" style="max-width: 220px">
+            <label
+              for="crnSelect"
+              class="form-label mb-1"
+              style="font-weight: 500; color: #222"
+              >CRN</label
+            >
+            <select id="crnSelect" class="form-select">
+              <option selected disabled>Select CRN</option>
+              <option value="63490">63490</option>
+              <option value="50710">50710</option>
+              <option value="69013">69013</option>
+            </select>
+          </div>
+          <div class="row justify-content-center align-items-start mb-2 gap-4">
+            <div
+              class="col-12 col-md-5 d-flex flex-column align-items-center mb-3 mb-md-0"
+            >
+              <div
+                class="bg-white rounded-4 shadow-sm p-3 w-100"
+                style="
+                  min-height: 220px;
+                  max-width: 340px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <div
+                  class="w-100"
+                  style="font-weight: 500; color: #444; margin-bottom: 0.5rem"
+                >
+                  <span id="selected-week-label">Week 1</span>
+                </div>
+                <canvas
+                  id="pieChart"
+                  style="max-width: 220px; max-height: 220px"
+                ></canvas>
+                <div
+                  class="mt-3 d-flex justify-content-center align-items-center gap-4 flex-wrap"
+                >
+                  <span>
+                    <span class="legend-dot legend-attended"></span>
+                    <span style="color: #7fa8d6; font-size: 0.97rem"
+                      >Attended</span
+                    >
+                  </span>
+                  <span>
+                    <span class="legend-dot legend-absent"></span>
+                    <span style="color: #7fa8d6; font-size: 0.97rem"
+                      >Absent</span
+                    >
+                  </span>
+                </div>
+              </div>
+              <div
+                class="text-center mt-2"
+                style="font-weight: 500; color: #222"
+              >
+                Weekly Attendance Overview
+              </div>
+            </div>
+            <div class="col-12 col-md-5 d-flex flex-column align-items-center">
+              <div
+                class="bg-white rounded-4 shadow-sm p-3 w-100"
+                style="
+                  min-height: 340px;
+                  max-width: 340px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                "
+              >
+                <canvas
+                  id="lineChart"
+                  style="max-width: 260px; max-height: 320px; height: 320px"
+                ></canvas>
+              </div>
+              <div
+                class="text-center mt-2"
+                style="font-weight: 500; color: #222"
+              >
+                Student Attendance Progress
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonus & Warning Attendance Report -->
+        <div class="custom-card">
+          <h6>Bonus & Warning Attendance Report</h6>
+          <div class="mb-2" id="bonus-warning-header">
+            Course: <span id="selected-course-label"></span> — CRN:
+            <span id="selected-crn-label"></span>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped align-middle">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Attendance Range</th>
+                  <th>Count of Students</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <i class="bi bi-patch-check-fill bonus-icon"></i>Bonus List
+                  </td>
+                  <td>&gt; 90% Attendance</td>
+                  <td>15 students</td>
+                  <td>
+                    <button class="btn btn-view btn-sm">view</button>
+                    <i class="bi bi-download icon-download"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <i class="bi bi-exclamation-triangle-fill warning-icon"></i
+                    >Warning List
+                  </td>
+                  <td>&lt; 25% Attendance</td>
+                  <td>3 students</td>
+                  <td>
+                    <button class="btn btn-view btn-sm">view</button>
+                    <i class="bi bi-download icon-download"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        // Update user initial
+        const userInitialSpan = document.getElementById("user-initial");
+        const userName = "sherif amr"; // Placeholder; replace with actual user name
+        if (userName && userName.trim()) {
+          userInitialSpan.textContent = userName.trim().charAt(0).toUpperCase();
+        }
+
+        // Pie Chart
+        const ctxPie = document.getElementById("pieChart").getContext("2d");
+        new Chart(ctxPie, {
+          type: "pie",
+          data: {
+            labels: ["Attended", "Absent"],
+            datasets: [
+              {
+                data: [70, 30],
+                backgroundColor: ["#bcdcff", "#7fa8d6"],
+              },
+            ],
+          },
+          options: {
+            plugins: {
+              legend: { display: false },
+            },
+          },
+        });
+
+        // Enhanced Line Chart with gradient and dynamic highlight
+        let lineChart;
+        function createLineChart(selectedWeekIdx = 1) {
+          const ctxLine = document.getElementById("lineChart").getContext("2d");
+          // Create gradient
+          const gradient = ctxLine.createLinearGradient(0, 0, 0, 320); // increased height for gradient
+          gradient.addColorStop(0, "#bcdcff");
+          gradient.addColorStop(1, "#fff");
+
+          // Demo data
+          const weekLabels = [
+            "Week 1",
+            "Week 2",
+            "Week 3",
+            "Week 4",
+            "Week 5",
+            "Week 6",
+            "Week 7",
+            "Week 8",
+            "Final",
+          ];
+          const weekData = [50, 95, 100, 40, 70, 80, 60, 90, 85];
+
+          // Highlight the selected week
+          const pointBackgroundColors = weekData.map((v, i) =>
+            i === selectedWeekIdx - 1 ? "#007bff" : "#7fa8d6"
+          );
+          const pointRadius = weekData.map((v, i) =>
+            i === selectedWeekIdx - 1 ? 8 : 5
+          );
+
+          if (lineChart) lineChart.destroy();
+          lineChart = new Chart(ctxLine, {
+            type: "line",
+            data: {
+              labels: weekLabels,
+              datasets: [
+                {
+                  label: "Attendance (%)",
+                  data: weekData,
+                  borderColor: "#007bff",
+                  backgroundColor: gradient,
+                  tension: 0.4,
+                  fill: true,
+                  pointBackgroundColor: pointBackgroundColors,
+                  pointBorderColor: "#fff",
+                  pointRadius: pointRadius,
+                  pointHoverRadius: 10,
+                  pointHoverBackgroundColor: "#28a745",
+                  borderWidth: 3,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  enabled: true,
+                  callbacks: {
+                    label: function (context) {
+                      return ` ${context.parsed.y}%`;
+                    },
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: "Weeks",
+                    color: "#888",
+                    font: { weight: 500 },
+                  },
+                  grid: { color: "#f0f4fa" },
+                  ticks: {
+                    color: "#555",
+                    font: { size: 12 },
+                  },
+                },
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  ticks: {
+                    callback: function (value) {
+                      return value + "%";
+                    },
+                    color: "#555",
+                    font: { size: 12 },
+                  },
+                  grid: { color: "#f0f4fa" },
+                },
+              },
+            },
+          });
+        }
+
+        // Initial chart render
+        createLineChart(1);
+
+        // Timer and unlock logic for week selection
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const weekSelect = document.getElementById('weekSelect');
+        //     let currentWeek = 1; // Start with Week 1 enabled
+
+        //     function unlockNextWeek() {
+        //         if (currentWeek < 9) { // 9 = final
+        //             const nextOption = weekSelect.options[currentWeek];
+        //             if (nextOption) nextOption.disabled = false;
+        //         }
+        //     }
+
+        //     weekSelect.addEventListener('change', function () {
+        //         // Only allow progressing to the next week if the previous is selected
+        //         if (parseInt(weekSelect.value) === currentWeek) {
+        //             // Simulate week ending after 5 seconds (replace with real timer logic)
+        //             setTimeout(() => {
+        //                 currentWeek++;
+        //                 unlockNextWeek();
+        //             }, 5000); // 5 seconds for demo
+        //         }
+        //     });
+
+        //     // Initially only Week 1 is enabled
+        //     for (let i = 2; i < weekSelect.options.length; i++) {
+        //         weekSelect.options[i].disabled = true;
+        //     }
+        // });
+
+        // Timer and unlock logic for week selection
+        document.addEventListener("DOMContentLoaded", function () {
+          const weekSelect = document.getElementById("weekSelect");
+          let currentWeek = 1; // Start with Week 1 enabled
+
+          // Example: Set your real week end dates here (YYYY-MM-DD format)
+          const weekEndDates = [
+            null, // index 0 not used
+            "2025-06-01", // Week 1 ends
+            "2025-06-08", // Week 2 ends
+            "2025-06-15", // Week 3 ends
+            "2025-06-22", // Week 4 ends
+            "2025-06-29", // Week 5 ends
+            "2025-07-06", // Week 6 ends
+            "2025-07-13", // Week 7 ends
+            "2025-07-20", // Week 8 ends
+            "2025-07-27", // Final
+          ];
+
+          function unlockWeeksByDate() {
+            const today = new Date();
+            for (let i = 1; i < weekSelect.options.length; i++) {
+              if (!weekEndDates[i]) continue;
+              const endDate = new Date(weekEndDates[i]);
+              // Enable week if today is after or on the end date of the previous week
+              if (i === 1 || today >= new Date(weekEndDates[i - 1])) {
+                weekSelect.options[i].disabled = false;
+                currentWeek = i;
+              } else {
+                weekSelect.options[i].disabled = true;
+              }
+            }
+          }
+
+          unlockWeeksByDate();
+
+          // Optionally, re-check every day if the page stays open
+          setInterval(unlockWeeksByDate, 60 * 60 * 1000); // every hour
+
+          // Update week label on change
+          const weekLabel = document.getElementById("selected-week-label");
+          weekSelect.addEventListener("change", function () {
+            if (weekSelect.options[weekSelect.selectedIndex].disabled) {
+              alert("This week is not available yet.");
+              weekSelect.selectedIndex = 0;
+              return;
+            }
+            let weekText = weekSelect.options[weekSelect.selectedIndex].text;
+            // Only update if a valid week is selected
+            if (weekSelect.selectedIndex > 0) {
+              weekLabel.textContent = weekText;
+              // Update line chart highlight
+              let idx = weekSelect.selectedIndex;
+              if (weekText.toLowerCase().includes("final")) idx = 9;
+              createLineChart(idx);
+            }
+          });
+        });
+
+        // Update Bonus & Warning Attendance Report header based on selected course and CRN
+        document.addEventListener("DOMContentLoaded", function () {
+          // Course and CRN select elements
+          const courseSelect = document.querySelector(
+            'select[aria-label="Course"]'
+          );
+          const crnSelect = document.getElementById("crnSelect");
+          const selectedCourseLabel = document.getElementById(
+            "selected-course-label"
+          );
+          const selectedCrnLabel =
+            document.getElementById("selected-crn-label");
+
+          // Map course value to course name (adjust as needed)
+          const courseMap = {
+            1: "CSE599",
+            2: "CSE598",
+          };
+
+          // Set initial values
+          function updateBonusWarningHeader() {
+            if (selectedCourseLabel && courseSelect) {
+              const courseValue = courseSelect.value;
+              selectedCourseLabel.textContent =
+                courseMap[courseValue] || "Course";
+            }
+            if (selectedCrnLabel && crnSelect) {
+              selectedCrnLabel.textContent = crnSelect.value || "CRN";
+            }
+          }
+
+          // Update on course select change
+          if (courseSelect) {
+            courseSelect.addEventListener("change", function () {
+              updateBonusWarningHeader();
+            });
+          }
+          // Update on CRN select change
+          if (crnSelect) {
+            crnSelect.addEventListener("change", function () {
+              updateBonusWarningHeader();
+            });
+          }
+
+          // Set initial values on load
+          updateBonusWarningHeader();
+        });
+      </script>
+    </div>
+  </body>
+</html>

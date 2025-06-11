@@ -7,6 +7,7 @@ const authorContraller = require("./controller logic/authController.js");
 const studentRouts = require("./Routs/studentRouts.js");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
+const path = require("path");
 
 // mail sender
 
@@ -32,8 +33,8 @@ app.use(express.static("public"));
 app.use("/addtosystem", studentRouts);
 
 app.post("/start-recording", attendSheet);
-function attendSheet(req, res) {
-  const process = spawn("python", ["./Ai module/model/model.py"]);
+async function attendSheet(req, res) {
+  const process = spawn("python", ["./Ai module/model/new model/aimodel.py"]);
   let output = "";
 
   const timeout = setTimeout(() => {
@@ -55,6 +56,7 @@ function attendSheet(req, res) {
     // res.send(output); // Send result to frontend
     clearTimeout(timeout);
     console.log(output);
+    let doctorname = req.session.doctorName;
     if (output) {
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -64,10 +66,25 @@ function attendSheet(req, res) {
         },
       });
       var mailOptions = {
-        from: "hassan.mohamed297200@gmail.com",
-        to: "hassan.mohamed297200@gmail.com",
-        subject: "Attend report",
-        text: output,
+        from: '"Smart Attendace System Team"<hassan.mohamed297200@gmail.com>',
+        to: "hassan.mohamed297200@gmail.com , dina.almahdy@must.edu.eg ",
+        subject: "Attend report sheet",
+        text: `Hello Dr.${doctorname},
+You have requested to attend today.
+Attached is a report (Excel sheet) of the students who attended your lecture today.
+
+Thank you for using our service.
+
+Best regards,
+Smart Attendance System Team.
+Misr University for Science and Technology.`,
+        attachments: [
+          {
+            filname: "attendace sheet",
+            path: "D:/Graduation project/Attendace system Wesite/Attendance Sheet.csv",
+            contentType: "text/csv",
+          },
+        ],
       };
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -107,6 +124,21 @@ app.get("/profile", (req, res) => {
   }
 
   res.render("profile.ejs", { name: name });
+});
+
+app.get("/reports", (req, res) => {
+  if (!req.session.doctorId) {
+    return res.redirect("/signin");
+  }
+
+  let name;
+  if (req.session.userType === "student") {
+    name = req.session.studentname;
+  } else if (req.session.userType === "teacher") {
+    name = req.session.doctorName;
+  }
+
+  res.render("report.ejs", { name: name });
 });
 
 app.get("/uploadvideo", (req, res) => {

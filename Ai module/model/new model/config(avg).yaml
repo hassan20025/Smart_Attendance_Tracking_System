@@ -1,0 +1,20 @@
+detection_threshold: 0.4
+similarity_threshold: 0.55
+frame_threshold: 3
+label_color: "#1166C7"
+model_paths:
+  yolo: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/YoloV11_1024.pt"
+  embeddings: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/student_embeddings.pkl"
+  box_img: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/6302663.png"
+  font_path: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/Roboto-VariableFont_wdth,wght.ttf"
+  logo_left_path: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/Screenshot_2025-02-07_002619-removebg-preview 1.png"
+  logo_right_path: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/image 11.png"
+padding: 30
+padding_color: "#BAD2F4"
+logo_size_percent_left: 0.115
+logo_size_percent_right: 1.15
+logo_margin_left: 10
+logo_margin_right: 15
+corner_radius: 20
+yolo_input_size: [1024, 576]
+session_timeout: 500
