@@ -114,7 +114,8 @@ if "❌" in resolution_status:
     issues.append("video resolution is too low")
 
 if brightness_status != "Good":
-    issues.append("brightness is not good")
+    issues.append('''brightness is not good .
+                  Try to record in natural or well-lit environments for clear videos.''')
 
 if contrast_status != "Good":
     issues.append("contrast is not good")

@@ -1,6 +1,6 @@
-detection_threshold: 0.4
-similarity_threshold: 0.55
-frame_threshold: 3
+detection_threshold: 0.45
+similarity_threshold: 0.50
+frame_threshold: 1
 label_color: "#1166C7"
 model_paths:
   yolo: "D:/Graduation project/Attendace system Wesite/Ai module/model/new model/YoloV11_1024.pt"
@@ -17,4 +17,4 @@ logo_margin_left: 10
 logo_margin_right: 15
 corner_radius: 20
 yolo_input_size: [1024, 576]
-session_timeout: 500
+session_timeout: 30

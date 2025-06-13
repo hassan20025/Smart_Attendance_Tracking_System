@@ -41,7 +41,7 @@ async function attendSheet(req, res) {
     process.kill();
     console.error("process stop ");
     res.status(504).send("process timeout");
-  }, 20000);
+  }, 100000);
 
   process.stdout.on("data", (data) => {
     output += data.toString();
@@ -65,12 +65,14 @@ async function attendSheet(req, res) {
           pass: "inla mugf nfsj ctwq",
         },
       });
+      // Area1 area2 client
+      // backend --> gmail -- >client
       var mailOptions = {
         from: '"Smart Attendace System Team"<hassan.mohamed297200@gmail.com>',
-        to: "hassan.mohamed297200@gmail.com , dina.almahdy@must.edu.eg ",
+        to: "hassan.mohamed297200@gmail.com",
         subject: "Attend report sheet",
         text: `Hello Dr.${doctorname},
-You have requested to attend today.
+You have requested to attend today for CSE 556 course and Crn is 63490 in 14/6/2025 .
 Attached is a report (Excel sheet) of the students who attended your lecture today.
 
 Thank you for using our service.
@@ -142,16 +144,11 @@ app.get("/reports", (req, res) => {
 });
 
 app.get("/uploadvideo", (req, res) => {
-  if (!req.session.doctorId) {
+  if (!req.session.studentId) {
     return res.redirect("/signin");
   }
 
-  let name;
-  if (req.session.userType === "student") {
-    name = req.session.studentname;
-  } else if (req.session.userType === "teacher") {
-    name = req.session.doctorName;
-  }
+  let name = req.session.studentName;
 
   res.render("uploadvideo.ejs", { result: "" });
 });
